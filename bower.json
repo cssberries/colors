@@ -1,0 +1,24 @@
+{
+  "name": "colors",
+  "authors": [
+    "Yevgeniy Belov"
+  ],
+  "description": "Collection of color systems",
+  "main": "settings-colors.less",
+  "keywords": [
+    "CSS",
+    "BEM",
+    "OOCSS",
+    "ITCSS",
+    "colors"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

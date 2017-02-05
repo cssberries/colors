@@ -1,0 +1,25 @@
+.loopShades(@color, @shadesNumber, @counter){
+    @step: 100 / @shadesNumber;
+    .loop(@shadesCounter) when (@shadesCounter > 0) {
+        .loop((@shadesCounter - 1));
+        .@{colorsNumber}-colors-@{counter}__@{shadesNumber}-shades-@{shadesCounter}{
+            color: shade(@color, (@shadesCounter - 1) * @step);
+        }
+    }
+    .loop(@shadesNumber);
+}
+
+.generate-colors(@colorsNumber, @shadesNumber) {
+    @baseColor: spin(red, @angle * (@colorsNumber));
+    @angle: 360 / @colorsNumber;
+    .loop(@counter) when (@counter > 0) {
+        @color: spin(@baseColor, @angle * (@counter - 1));
+        .loop((@counter - 1));
+        .test when (@counter / @colorsNumber = 1 / 6){
+            @test: red;
+        }
+        .loopShades(@color, @shadesNumber, @counter);
+    }
+        .loop(@colorsNumber);
+}
+// .generate-colors(12, 4);
