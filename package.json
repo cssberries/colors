@@ -1,0 +1,15 @@
+{
+    "name": "colors",
+    "version": "1.0.0",
+    "description": "",
+    "main": "colors.less",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:cssberries/colors.git"
+    },
+    "author": "Yevgeniy Belov",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/cssberries/colors/issues"
+    }
+}
