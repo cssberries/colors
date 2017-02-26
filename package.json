@@ -1,8 +1,8 @@
 {
     "name": "cssberries-colors",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "",
-    "main": "colors.less",
+    "main": "settings-4-shades-per-12-colors.less",
     "repository": {
         "type": "git",
         "url": "git@github.com:cssberries/colors.git"
