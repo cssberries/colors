@@ -15,11 +15,8 @@
   .loop(@counter) when (@counter > 0) {
     @color: spin(@baseColor, @angle * (@counter - 1));
     .loop((@counter - 1));
-    .test when (@counter / @colorsNumber = 1 / 6) {
-      @test: red;
-    }
     .loopShades(@color, @shadesNumber, @counter);
   }
   .loop(@colorsNumber);
 }
-.generate-colors(12, 4);
+.generate-colors(1, 1);
