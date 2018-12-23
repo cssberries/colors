@@ -1,8 +1,8 @@
 {
     "name": "cssberries-colors",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "description": "",
-    "main": "colors.json",
+    "main": "colors-generator.js",
     "repository": {
         "type": "git",
         "url": "git@github.com:cssberries/colors.git"
