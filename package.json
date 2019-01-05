@@ -1,8 +1,12 @@
 {
     "name": "cssberries-colors",
-    "version": "2.2.0",
+    "version": "2.3.101",
     "description": "",
-    "main": "colors-generator.js",
+    "main": "index.js",
+    "scripts": {
+        "build:js": "node colors-generator.js",
+        "watch": "watch 'npm run build:js' ./"
+    },
     "repository": {
         "type": "git",
         "url": "git@github.com:cssberries/colors.git"
@@ -15,6 +19,7 @@
     "devDependencies": {
         "color": "^3.1.0",
         "color-to-name": "^1.0.15",
-        "hex-to-color-name": "^1.0.1"
+        "hex-to-color-name": "^1.0.1",
+        "watch": "^1.0.2"
     }
 }
