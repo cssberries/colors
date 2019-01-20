@@ -1,11 +1,12 @@
 {
     "name": "cssberries-colors",
     "version": "2.3.101",
+    "postcss": {},
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build:js": "node colors-generator.js",
-        "watch": "watch 'npm run build:js' ./"
+        "build:js": "node ./src/generate.js",
+        "watch": "watch 'npm run build:js' ./src"
     },
     "repository": {
         "type": "git",

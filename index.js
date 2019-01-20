@@ -1,4 +1,6 @@
-const colorsGenerator = require('./colors-generator');
+const generate = require('./src/generate');
+const palettes = require('./src/palettes');
 module.exports = {
-    // colorsGenerator
+    generate,
+    palettes
 }
