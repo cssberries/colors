@@ -1,6 +1,6 @@
 {
     "name": "cssberries-colors",
-    "version": "2.3.101",
+    "version": "3.0.0",
     "postcss": {},
     "description": "",
     "main": "index.js",
