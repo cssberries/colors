@@ -17,10 +17,12 @@
     "bugs": {
         "url": "https://github.com/cssberries/colors/issues"
     },
-    "devDependencies": {
+    "dependencies": {
         "color": "^3.1.0",
         "color-to-name": "^1.0.15",
         "hex-to-color-name": "^1.0.1",
+    },
+    "devDependencies": {
         "watch": "^1.0.2"
     }
 }
