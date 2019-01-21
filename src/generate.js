@@ -21,8 +21,8 @@ const colors_12 = [
     'green',
     'cyanish-green',
     'cyan',
-    'blue',
     'cyanish-blue',
+    'blue',
     'bluish-purple',
     'purple',
     'redish-purple',
@@ -38,16 +38,8 @@ const strongness_9 = Palettes.names.strongness["9_levels"];
 const strongness_7 = Palettes.names.strongness["7_levels"];
 const strongness_5 = Palettes.names.strongness["5_levels"];
 const strongness_3 = Palettes.names.strongness["3_levels"];
-
-// exports.textColors = {
-//     'text-color-weakest': 'rgba(0,0,0, 0.4)',
-//     'text-color-weak': 'rgba(0,0,0, 0.55)',
-//     'text-color-medium': 'rgba(0,0,0, 0.7)',
-//     'text-color-strong': 'rgba(0,0,0, 0.85)',
-//     'text-color-strongest': 'rgba(0,0,0, 1)'
-// }
-
-function generateShades(color, shadesNumber, counter, colorsNumber, colorsList) {
+var exports = module.exports = {};
+function generateShades(color, shadesNumber, counter, colorsNumber, colorsList, addNames) {
     let step = 100 / shadesNumber;
     for (let i = 1; i < shadesNumber + 1; i++) {
         let className = '';
@@ -62,10 +54,12 @@ function generateShades(color, shadesNumber, counter, colorsNumber, colorsList) 
         } else {
             className = colorsNumber + '_' + counter + shades_4[i - 1];
         }
-        colorsList[className] = (color.darken((i - 1) * step / 100).hex());
+        if (addNames) {
+            colorsList[className] = (color.darken((i - 1) * step / 100).hex());
+        } else
+        colorsList.push((color.darken((i - 1) * step / 100).hex()));
     }
 }
-var exports = module.exports = {};
 exports.generateSet = function (type, element, property, setSize) {
     let set = {};
     let strongness = [];
@@ -77,24 +71,27 @@ exports.generateSet = function (type, element, property, setSize) {
         strongness = strongness_7;
     } else if (setSize === 9) {
         strongness = strongness_9;
-    }else return {
+    } else return {
         '-----Error': `'Size of a set must be: 3,5,7 or 9'`
     }
     if (type === 'strongness') {
         for (let i = 0; i < setSize; i++) {
             let name = property + strongness[i];
-            set[name] = `var(--${element}-${name}, ${exports.getMonochromeColor('black', setSize, .4, 1, i)})`;
+            set[name] = `var(--${element}-${name}, ${exports.getMonoAlpha('black', setSize, .4, 1, i)})`;
         }
     }
     return set;
 }
-exports.generateColorSet = function (colorsNumber, shadesNumber) {
-    var colorsList = {};
-    let firstColor = color('#ff0000');
+exports.generateColorSet = function (colorsNumber, shadesNumber, addNames) {
+    var colorsList = [];
+    if (addNames) {
+        colorsList = {};
+    }
+    let firstColor = Color('#ff0000');
     let angle = 360 / colorsNumber;
     for (let i = 1; i < colorsNumber + 1; i++) {
         let color = firstColor.rotate(angle * i);
-        generateShades(color, shadesNumber, i, colorsNumber, colorsList);
+        generateShades(color, shadesNumber, i, colorsNumber, colorsList, addNames);
     }
     return colorsList;
 }
@@ -120,26 +117,7 @@ exports.generateMonoColorSet = function (amount, weakest) {
     }
     return colors;
 }
-exports.generateMonoColorSet2 = function (amount, medium) {
-    let colors = {};
-    let baseColor = Color(medium).hsl();
-    let gradationNumber = amount / 2 - 1;
-    let step = 100 / amount;
-
-    for (let i = 0; i < gradationNumber; i++) {
-        let className = '';
-        className = strongness_7[i];
-        colors[className] = (baseColor.lighten((i) * step / 100).hex());
-    }
-    colors['-medium'] = medium;
-    for (let i = 0; i < gradationNumber; i++) {
-        let className = '';
-        className = strongness_7[i + 4];
-        colors[className] = (baseColor.darken((i) * step / 100).hex());
-    }
-    return colors;
-}
-exports.generateMonochromeList = function (baseColor, amount, weakest, strongest) {
+exports.gradate = function (baseColor, amount, weakest, strongest) {
     let list = [];
     let stepsNumber = amount - 2;
     let stepValue = ((strongest - weakest) / (amount - 1));
@@ -150,11 +128,26 @@ exports.generateMonochromeList = function (baseColor, amount, weakest, strongest
     list.push(Color(baseColor).alpha(strongest).hsl().string());
     return list;
 }
-exports.getMonochromeColor = function (baseColor, amount, weakest, strongest, position) {
-    let list = exports.generateMonochromeList(baseColor, amount, weakest, strongest);
+exports.getMonoAlpha = function (baseColor, amount, weakest, strongest, position) {
+    let list = exports.gradate(baseColor, amount, weakest, strongest);
     let color = list[position];
     return color;
 }
-// fs.writeFile("colors-list.json", JSON.stringify(exports.getMonochromeColor('black', 5, .4, 1, 2), null, 4), function (err) {
+exports.generateManualSet = function (manualset) {
+    let set = {};
+    for (property in manualset) {
+        let colors = exports.generateColorSet(12, 4, true);
+        colors[property] = exports.getMonoAlpha('#eee', 5, .4, 1, 1);
+        let colorName = manualset[property];
+        set[property] = `var(--bg-${property},${colors[colorName]})`;
+    }
+    console.log(set);
+    
+    return set;
+}
+// fs.writeFile("shades.json", JSON.stringify(exports.gradate('green', 5, .5, .9), null, 4), function (err) {
+//     console.log("The file was saved!");
+// });
+// fs.writeFile("shades.json", JSON.stringify(exports.generateColorSet(12, 4, true), null, 4), function (err) {
 //     console.log("The file was saved!");
 // });
