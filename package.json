@@ -5,8 +5,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build:js": "node ./src/generate.js",
-        "watch": "watch 'npm run build:js' ./src"
+        "build:js": "node \"./src/generate.js\"",
+        "watch": "watch \"npm run build:js\" \"./src\""
     },
     "repository": {
         "type": "git",

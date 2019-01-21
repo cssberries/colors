@@ -117,19 +117,24 @@ exports.generateMonoColorSet = function (amount, weakest) {
     }
     return colors;
 }
-exports.gradate = function (baseColor, amount, weakest, strongest) {
+exports.gradate = function (baseColor, amount, weakest, strongest, manipulation, step) {
     let list = [];
-    let stepsNumber = amount - 2;
+    console.log(manipulation);
+    
+    let stepsNumber = amount - 2; // Remove weakest and strongest
     let stepValue = ((strongest - weakest) / (amount - 1));
-    list.push(Color(baseColor).alpha(weakest).hsl().string());
+    list.push(Color(baseColor)[manipulation](weakest).rgb().string());
     for (let i = 0; i < stepsNumber; i++) {
-        list.push(Color(baseColor).alpha(weakest + parseFloat(stepValue.toFixed(2)) * (i + 1)).hsl().string());
+        list.push(Color(baseColor)[manipulation]((weakest + (stepValue * (i + 1))).toFixed(3)).rgb().string());
     }
-    list.push(Color(baseColor).alpha(strongest).hsl().string());
+    list.push(Color(baseColor)[manipulation](strongest).rgb().string());
+    if (step) {
+        return list[step];
+    } else
     return list;
 }
 exports.getMonoAlpha = function (baseColor, amount, weakest, strongest, position) {
-    let list = exports.gradate(baseColor, amount, weakest, strongest);
+    let list = exports.gradate(baseColor, amount, weakest, strongest, 'alpha');
     let color = list[position];
     return color;
 }
@@ -137,17 +142,26 @@ exports.generateManualSet = function (manualset) {
     let set = {};
     for (property in manualset) {
         let colors = exports.generateColorSet(12, 4, true);
-        colors[property] = exports.getMonoAlpha('#eee', 5, .4, 1, 1);
+        colors[property] = exports.getMonoAlpha('white', 5, .4, 1, 1);
         let colorName = manualset[property];
+        if (Array.isArray(colorName)) {
+            set[property] = `var(--bg-${property},${exports.gradate(colorName)})`;
+        }
         set[property] = `var(--bg-${property},${colors[colorName]})`;
-    }
-    console.log(set);
-    
+    }    
     return set;
 }
-// fs.writeFile("shades.json", JSON.stringify(exports.gradate('green', 5, .5, .9), null, 4), function (err) {
+// fs.writeFile("shades.json", JSON.stringify(exports.gradate('white', 5, 0, .215, 'darken'), null, 4), function (err) {
 //     console.log("The file was saved!");
 // });
 // fs.writeFile("shades.json", JSON.stringify(exports.generateColorSet(12, 4, true), null, 4), function (err) {
 //     console.log("The file was saved!");
 // });
+fs.writeFile("manual-set.json", JSON.stringify(exports.generateManualSet({
+    'content': `['white', 3, .1, 1, 'alpha', 0]`,
+    'aside': `['white', 3, .1, 1, 'alpha', 1]`,
+    'canvas': `['white', 3, .1, 1, 'alpha', 2]`,
+    'primary': 'blue'
+}), null, 4), function (err) {
+    console.log("The file was saved!");
+});
