@@ -1,3 +1,7 @@
+
+const Color = require('color');
+const GENERATE = require('./generate');
+console.log(GENERATE);
 exports.names = {
     'strongness': {
         '3_levels': [
@@ -53,7 +57,7 @@ exports.names = {
     ]
 }
 exports.basic = {
-    'primary': 'var(--color-primary)',
+    // 'primary': `${Generate.generateManualSet('test')})`,
     'secondary': 'var(--color-secondary)',
     'accent': 'var(--color-accent)',
     'canvas': 'var(--color-canvas)',
