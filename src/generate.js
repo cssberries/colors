@@ -3,6 +3,7 @@
 const fs = require('fs');
 const Color = require('color');
 const Palettes = require('./palettes');
+const flatten = require('flat')
 
 const colors_3 = [
     'blue',
@@ -56,15 +57,27 @@ Object.prototype.mixture = function (shades, tints) {
     for (let colorNumber = 0; colorNumber < colors.length; colorNumber++) {   
         let parsedColor = Color(colors[colorNumber]);
         let mixtureNumber = shades + tints;
-        let step = 100 / mixtureNumber;
-        for (let i = 2; i < mixtureNumber + 1; i++) {
-            if (i < tints) {
-                mixture.push((parsedColor.lighten((i - 1) * step / 100).hex()));
-            } else mixture.push((parsedColor.darken((i - 1) * step / 100).hex()));
+        let tintsStep = 100 / tints;
+        let shadesStep = 100 / shades;
+        let tintsList = [];
+        let shadesList = [];
+        let set = [];
+        for (let i = 0; i < mixtureNumber; i++) {
+            if (i < tints) {                
+                tintsList.push((parsedColor.lighten(i * tintsStep / 100).hex()));
+            }
+            if(i > tints){
+                shadesList.push((parsedColor.darken((i-tints) * shadesStep / 100).hex()));
+            }
+            if (i === tints) {
+                tintsList.reverse();
+            }
+            set = tintsList.concat(shadesList);
         }    
+        mixture.push(set);
     }
-    this.mixture = mixture;
-    return this;
+    this.mixtures = Object.values(flatten(mixture));
+    return this.mixtures;
 }
 e.colors = function (amount) {
     let colors = [];
@@ -79,9 +92,8 @@ e.colors = function (amount) {
 }
 
 fs.writeFile("2.json", JSON.stringify((
-    e.colors(6)
+    e.colors(12)
     .mixture(4,4)
-
 ), null, 4), function (err) {
     console.log("The file was saved!");
     });
@@ -210,32 +222,6 @@ e.generateManualSet = function (manualset) {
     }
     return set;
 }
-
-// fs.writeFile("gradateObject.json", JSON.stringify(e.gradate_1(
-//     {
-//         'color': 'white',
-//         'gradations': 3,
-//         'from': 0,
-//         'to': .1,
-//         'manipulation': 'darken',
-//         'varName': 'bg-canvas',
-//         'step': 2,
-//         'addVars': true
-//     }
-// ), null, 4), function (err) {
-//     console.log("The file was saved!");
-// });
-// fs.writeFile("shades.json", JSON.stringify(e.gradate('white', 5, 0, .215, 'darken'), null, 4), function (err) {
-//     console.log("The file was saved!");
-// });
 fs.writeFile("gradate.json", JSON.stringify(e.gradate('white', 5, 0, .4, 'darken', 'step', true), null, 4), function (err) {
     console.log("The file was saved!");
 });
-// fs.writeFile("manual-set.json", JSON.stringify(e.generateManualSet({
-//     'content': `['white', 3, .1, 1, 'alpha', 0]`,
-//     'aside': `['white', 3, .1, 1, 'alpha', 1]`,
-//     'canvas': `['white', 3, .1, 1, 'alpha', 2]`,
-//     'primary': 'blue'
-// }), null, 4), function (err) {
-//     console.log("The file was saved!");
-// });

@@ -24,6 +24,7 @@
         "hex-to-color-name": "^1.0.1"
     },
     "devDependencies": {
+        "flat": "^4.1.0",
         "watch": "^1.0.2"
     }
 }
