@@ -6,8 +6,8 @@ const Palettes = require('./palettes');
 const flatten = require('flat')
 
 const colors_3 = [
-    'blue',
     'green',
+    'blue',
     'red'
 ];
 const colors_6 = [
@@ -34,15 +34,15 @@ const colors_12 = [
 ];
 const shades_4 = [
     '',
-    '-dark',
-    '-darker',
-    '-darkest'
+    'dark',
+    'darker',
+    'darkest'
 ];
 const tints_4 = [
     '',
-    '-light',
-    '-lighter',
-    '-lightest'
+    'light',
+    'lighter',
+    'lightest'
 ];
 const strongness_9 = Palettes.names.strongness["9_levels"];
 const strongness_7 = Palettes.names.strongness["7_levels"];
@@ -53,8 +53,7 @@ var e = module.exports = {};
 Object.prototype.mixture = function (shades, tints) {
     let colors = this.colors;
     let mixture = [];
-
-    for (let colorNumber = 0; colorNumber < colors.length; colorNumber++) {   
+    for (let colorNumber = 0; colorNumber < colors.length; colorNumber++) {
         let parsedColor = Color(colors[colorNumber]);
         let mixtureNumber = shades + tints;
         let tintsStep = 100 / tints;
@@ -62,24 +61,36 @@ Object.prototype.mixture = function (shades, tints) {
         let tintsList = [];
         let shadesList = [];
         let set = [];
-        for (let i = 0; i < mixtureNumber; i++) {
-            if (i < tints) {                
-                tintsList.push((parsedColor.lighten(i * tintsStep / 100).hex()));
+        let mixturesByColor = [];
+        let hueName = colors_3[colorNumber];
+        for (let i = 1; i < mixtureNumber; i++) {
+            if (i < tints) {
+                let tint = {};
+                tint[hueName+'-'+tints_4[i]] = parsedColor.lighten(i * tintsStep / 100).hex();
+                tintsList.push(tint);
             }
-            if(i > tints){
-                shadesList.push((parsedColor.darken((i-tints) * shadesStep / 100).hex()));
+            if (i > tints) {
+               let shade = {};
+                shade[hueName+'-'+shades_4[i-tints]] = parsedColor.darken((i-tints) * shadesStep / 100).hex();
+                shadesList.push(shade);
             }
             if (i === tints) {
                 tintsList.reverse();
             }
-            set = tintsList.concat(shadesList);
-        }    
-        mixture.push(set);
+        }
+        set.push(tintsList);
+        set = set.slice();
+        set.push({
+            hue: colors[colorNumber]
+        });
+        set.push(shadesList);
+        mixture=mixture.concat(set);
     }
+    this.mixturesByColor = mixture;
     this.mixtures = Object.values(flatten(mixture));
-    return this.mixtures;
+    return this;
 }
-e.colors = function (amount) {
+e.hue = function (amount) {
     let colors = [];
     let firstColor = Color('#ff0000');
     let angle = 360 / amount;
@@ -92,11 +103,11 @@ e.colors = function (amount) {
 }
 
 fs.writeFile("2.json", JSON.stringify((
-    e.colors(12)
-    .mixture(4,4)
+    e.hue(3)
+    .mixture(4, 4)
 ), null, 4), function (err) {
     console.log("The file was saved!");
-    });
+});
 
 function generateShades(color, shadesNumber, counter, colorsNumber, colorsList, addNames) {
     let step = 100 / shadesNumber;
@@ -186,7 +197,7 @@ e.gradate_1 = function (g) {
             if (g.gradations > 1) {
                 list.push(`var(--${g.varName}, ${colorValue})`);
             } else
-            list.push(`var(--${g.varName}), ${colorValue}`);
+                list.push(`var(--${g.varName}), ${colorValue}`);
         } else
             list.push(colorValue);
     }

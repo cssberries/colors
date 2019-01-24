@@ -1,0 +1,107 @@
+{
+    "colors": [
+        "#00FF00",
+        "#0000FF",
+        "#FF0000"
+    ],
+    "mixturesByColor": [
+        [
+            {
+                "green-lightest": "#BFFFBF"
+            },
+            {
+                "green-lighter": "#80FF80"
+            },
+            {
+                "green-light": "#40FF40"
+            }
+        ],
+        {
+            "hue": "#00FF00"
+        },
+        [
+            {
+                "green-dark": "#00BF00"
+            },
+            {
+                "green-darker": "#008000"
+            },
+            {
+                "green-darkest": "#004000"
+            }
+        ],
+        [
+            {
+                "blue-lightest": "#BFBFFF"
+            },
+            {
+                "blue-lighter": "#8080FF"
+            },
+            {
+                "blue-light": "#4040FF"
+            }
+        ],
+        {
+            "hue": "#0000FF"
+        },
+        [
+            {
+                "blue-dark": "#0000BF"
+            },
+            {
+                "blue-darker": "#000080"
+            },
+            {
+                "blue-darkest": "#000040"
+            }
+        ],
+        [
+            {
+                "red-lightest": "#FFBFBF"
+            },
+            {
+                "red-lighter": "#FF8080"
+            },
+            {
+                "red-light": "#FF4040"
+            }
+        ],
+        {
+            "hue": "#FF0000"
+        },
+        [
+            {
+                "red-dark": "#BF0000"
+            },
+            {
+                "red-darker": "#800000"
+            },
+            {
+                "red-darkest": "#400000"
+            }
+        ]
+    ],
+    "mixtures": [
+        "#BFFFBF",
+        "#80FF80",
+        "#40FF40",
+        "#00FF00",
+        "#00BF00",
+        "#008000",
+        "#004000",
+        "#BFBFFF",
+        "#8080FF",
+        "#4040FF",
+        "#0000FF",
+        "#0000BF",
+        "#000080",
+        "#000040",
+        "#FFBFBF",
+        "#FF8080",
+        "#FF4040",
+        "#FF0000",
+        "#BF0000",
+        "#800000",
+        "#400000"
+    ]
+}
