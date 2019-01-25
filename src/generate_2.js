@@ -36,24 +36,7 @@ const strongness_5 = Palettes.names.strongness["5_levels"];
 const strongness_3 = Palettes.names.strongness["3_levels"];
 
 var e = module.exports = {};
-
-//
-var Colors = function() {
-  this.hueList = [];
-  this.mixturesList = [];
-  this.namedList = {};
-};
-Colors.prototype.hues = function(amount) {
-    let firstColor = Color('#ff0000');
-    let angle = 360 / amount;
-    for (let i = 1; i < amount + 1; i++) {
-        let color = firstColor.rotate(angle * i).hex();
-        this.hueList.push(color);
-    }
-    return this;
-};
-//
-Colors.prototype.toObject = function () {
+Object.prototype.toObject = function () {
     let array  = this.mixturesNamed;
     let obj = {};
     for (let i = 0; i < array.length; i++) {
@@ -62,11 +45,13 @@ Colors.prototype.toObject = function () {
     this.named = obj;
     return this;
 }
-Colors.prototype.mixture = function (shades, tints) {
+Object.prototype.mixture = function (shades, tints) {
+    let colors = this.colors;
     let colorsNum = colors.length;
     let mixture = [];
+    let named = {};
     for (let colorNumber = 0; colorNumber < colorsNum; colorNumber++) {
-        let parsedColor = Color(this.hueList[colorNumber]);
+        let parsedColor = Color(colors[colorNumber]);
         let mixtureNumber = shades + tints;
         let tintsStep = 100 / tints;
         let shadesStep = 100 / shades;
@@ -99,16 +84,27 @@ Colors.prototype.mixture = function (shades, tints) {
         );
         mixture = mixture.concat(shadesList);
     }
+    // this.named = toObj(mixture);
     this.mixturesNamed = mixture;
     this.mixtures = Object.values(flatten(mixture));
     return this;
 }
-var colors = new Colors();
-    colors.hues(3)
+e.hue = function (amount) {
+    let colors = [];
+    let firstColor = Color('#ff0000');
+    let angle = 360 / amount;
+    for (let i = 1; i < amount + 1; i++) {
+        let color = firstColor.rotate(angle * i).hex();
+        colors.push(color);
+    }
+    this.colors = colors;
+    return this;
+}
+
+fs.writeFile("2.json", JSON.stringify((
+    e.hue(3)
     .mixture(2, 2)
     .toObject()
-fs.writeFile("2.json", JSON.stringify((
-    colors
 ), null, 4), function (err) {
     console.log("The file was saved!");
 });

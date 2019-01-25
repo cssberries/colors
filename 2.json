@@ -1,58 +1,12 @@
 {
-    "colors": [
+    "hueList": [
         "#00FF00",
         "#0000FF",
         "#FF0000"
     ],
-    "mixturesNamed": [
-        {
-            "green-light": "#80FF80"
-        },
-        {
-            "green": "#00FF00"
-        },
-        {
-            "green-dark": "#008000"
-        },
-        {
-            "blue-light": "#8080FF"
-        },
-        {
-            "blue": "#0000FF"
-        },
-        {
-            "blue-dark": "#000080"
-        },
-        {
-            "red-light": "#FF8080"
-        },
-        {
-            "red": "#FF0000"
-        },
-        {
-            "red-dark": "#800000"
-        }
-    ],
-    "mixtures": [
-        "#80FF80",
-        "#00FF00",
-        "#008000",
-        "#8080FF",
-        "#0000FF",
-        "#000080",
-        "#FF8080",
-        "#FF0000",
-        "#800000"
-    ],
-    "named": {
-        "green-light": "#80FF80",
-        "green": "#00FF00",
-        "green-dark": "#008000",
-        "blue-light": "#8080FF",
-        "blue": "#0000FF",
-        "blue-dark": "#000080",
-        "red-light": "#FF8080",
-        "red": "#FF0000",
-        "red-dark": "#800000"
-    }
+    "mixturesList": [],
+    "namedList": {},
+    "mixturesNamed": [],
+    "mixtures": [],
+    "named": {}
 }
