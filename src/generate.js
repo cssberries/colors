@@ -36,25 +36,28 @@ const strongness_5 = Palettes.names.strongness["5_levels"];
 const strongness_3 = Palettes.names.strongness["3_levels"];
 
 var e = module.exports = {};
-
+// e.Colors = Colors;
 //
-var Colors = function() {
+e.Colors = function() {
   this.hueList = [];
   this.mixturesList = [];
   this.namedList = {};
 };
-Colors.prototype.hues = function(amount) {
+
+e.Colors.prototype.hues = function(amount) {
     let firstColor = Color('#ff0000');
     let angle = 360 / amount;
     for (let i = 1; i < amount + 1; i++) {
         let color = firstColor.rotate(angle * i).hex();
+        // console.log(this);
+        
         this.hueList.push(color);
     }
     return this;
 };
 //
-Colors.prototype.toObject = function () {
-    let array  = this.mixturesNamed;
+e.Colors.prototype.toObject = function () {
+    let array  = this.mixturesList;
     let obj = {};
     for (let i = 0; i < array.length; i++) {
         obj[Object.keys(array[i])] = Object.values(array[i])[0];
@@ -62,8 +65,8 @@ Colors.prototype.toObject = function () {
     this.named = obj;
     return this;
 }
-Colors.prototype.mixture = function (shades, tints) {
-    let colorsNum = colors.length;
+e.Colors.prototype.mixture = function (shades, tints) {
+    let colorsNum = this.hueList.length;
     let mixture = [];
     for (let colorNumber = 0; colorNumber < colorsNum; colorNumber++) {
         let parsedColor = Color(this.hueList[colorNumber]);
@@ -91,24 +94,22 @@ Colors.prototype.mixture = function (shades, tints) {
         }
         mixture = mixture.concat(tintsList);
         let hue = {};
-        hue[colors_12[colorIndex]] = colors[colorNumber]
-        console.log(colorIndex);
-        
+        hue[colors_12[colorIndex]] = this.hueList[colorNumber]        
         mixture.push(
             hue
         );
         mixture = mixture.concat(shadesList);
     }
-    this.mixturesNamed = mixture;
+    this.mixturesList = mixture;
     this.mixtures = Object.values(flatten(mixture));
     return this;
 }
-var colors = new Colors();
-    colors.hues(3)
-    .mixture(2, 2)
-    .toObject()
+var coloritt = new e.Colors();
+    coloritt.hues(12)
+    coloritt.mixture(4, 4)
+    coloritt.toObject()
 fs.writeFile("2.json", JSON.stringify((
-    colors
+    coloritt
 ), null, 4), function (err) {
     console.log("The file was saved!");
 });
@@ -237,6 +238,6 @@ e.generateManualSet = function (manualset) {
     }
     return set;
 }
-fs.writeFile("gradate.json", JSON.stringify(e.gradate('white', 5, 0, .4, 'darken', 'step', true), null, 4), function (err) {
-    console.log("The file was saved!");
-});
+// fs.writeFile("gradate.json", JSON.stringify(e.gradate('white', 5, 0, .4, 'darken', 'step', true), null, 4), function (err) {
+//     console.log("The file was saved!");
+// });

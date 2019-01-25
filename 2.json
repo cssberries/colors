@@ -1,12 +1,443 @@
 {
     "hueList": [
+        "#FF8000",
+        "#FFFF00",
+        "#80FF00",
         "#00FF00",
+        "#00FF80",
+        "#00FFFF",
+        "#007FFF",
         "#0000FF",
+        "#7F00FF",
+        "#FF00FF",
+        "#FF0080",
         "#FF0000"
     ],
-    "mixturesList": [],
+    "mixturesList": [
+        {
+            "orange-lightest": "#FFDFBF"
+        },
+        {
+            "orange-lighter": "#FFC080"
+        },
+        {
+            "orange-light": "#FFA040"
+        },
+        {
+            "orange": "#FF8000"
+        },
+        {
+            "orange-dark": "#BF6000"
+        },
+        {
+            "orange-darker": "#804000"
+        },
+        {
+            "orange-darkest": "#402000"
+        },
+        {
+            "yellow-lightest": "#FFFFBF"
+        },
+        {
+            "yellow-lighter": "#FFFF80"
+        },
+        {
+            "yellow-light": "#FFFF40"
+        },
+        {
+            "yellow": "#FFFF00"
+        },
+        {
+            "yellow-dark": "#BFBF00"
+        },
+        {
+            "yellow-darker": "#7F8000"
+        },
+        {
+            "yellow-darkest": "#404000"
+        },
+        {
+            "yellowish-green-lightest": "#DFFFBF"
+        },
+        {
+            "yellowish-green-lighter": "#C0FF80"
+        },
+        {
+            "yellowish-green-light": "#A0FF40"
+        },
+        {
+            "yellowish-green": "#80FF00"
+        },
+        {
+            "yellowish-green-dark": "#60BF00"
+        },
+        {
+            "yellowish-green-darker": "#408000"
+        },
+        {
+            "yellowish-green-darkest": "#204000"
+        },
+        {
+            "green-lightest": "#BFFFBF"
+        },
+        {
+            "green-lighter": "#80FF80"
+        },
+        {
+            "green-light": "#40FF40"
+        },
+        {
+            "green": "#00FF00"
+        },
+        {
+            "green-dark": "#00BF00"
+        },
+        {
+            "green-darker": "#008000"
+        },
+        {
+            "green-darkest": "#004000"
+        },
+        {
+            "cyanish-green-lightest": "#BFFFDF"
+        },
+        {
+            "cyanish-green-lighter": "#80FFC0"
+        },
+        {
+            "cyanish-green-light": "#40FFA0"
+        },
+        {
+            "cyanish-green": "#00FF80"
+        },
+        {
+            "cyanish-green-dark": "#00BF60"
+        },
+        {
+            "cyanish-green-darker": "#008040"
+        },
+        {
+            "cyanish-green-darkest": "#004020"
+        },
+        {
+            "cyan-lightest": "#BFFFFF"
+        },
+        {
+            "cyan-lighter": "#80FFFF"
+        },
+        {
+            "cyan-light": "#40FFFF"
+        },
+        {
+            "cyan": "#00FFFF"
+        },
+        {
+            "cyan-dark": "#00BFBF"
+        },
+        {
+            "cyan-darker": "#007F80"
+        },
+        {
+            "cyan-darkest": "#004040"
+        },
+        {
+            "cyanish-blue-lightest": "#BFDFFF"
+        },
+        {
+            "cyanish-blue-lighter": "#80BFFF"
+        },
+        {
+            "cyanish-blue-light": "#409FFF"
+        },
+        {
+            "cyanish-blue": "#007FFF"
+        },
+        {
+            "cyanish-blue-dark": "#005FBF"
+        },
+        {
+            "cyanish-blue-darker": "#003F80"
+        },
+        {
+            "cyanish-blue-darkest": "#002040"
+        },
+        {
+            "blue-lightest": "#BFBFFF"
+        },
+        {
+            "blue-lighter": "#8080FF"
+        },
+        {
+            "blue-light": "#4040FF"
+        },
+        {
+            "blue": "#0000FF"
+        },
+        {
+            "blue-dark": "#0000BF"
+        },
+        {
+            "blue-darker": "#000080"
+        },
+        {
+            "blue-darkest": "#000040"
+        },
+        {
+            "bluish-purple-lightest": "#DFBFFF"
+        },
+        {
+            "bluish-purple-lighter": "#BF80FF"
+        },
+        {
+            "bluish-purple-light": "#9F40FF"
+        },
+        {
+            "bluish-purple": "#7F00FF"
+        },
+        {
+            "bluish-purple-dark": "#5F00BF"
+        },
+        {
+            "bluish-purple-darker": "#3F0080"
+        },
+        {
+            "bluish-purple-darkest": "#200040"
+        },
+        {
+            "purple-lightest": "#FFBFFF"
+        },
+        {
+            "purple-lighter": "#FF80FF"
+        },
+        {
+            "purple-light": "#FF40FF"
+        },
+        {
+            "purple": "#FF00FF"
+        },
+        {
+            "purple-dark": "#BF00BF"
+        },
+        {
+            "purple-darker": "#80007F"
+        },
+        {
+            "purple-darkest": "#400040"
+        },
+        {
+            "redish-purple-lightest": "#FFBFDF"
+        },
+        {
+            "redish-purple-lighter": "#FF80C0"
+        },
+        {
+            "redish-purple-light": "#FF40A0"
+        },
+        {
+            "redish-purple": "#FF0080"
+        },
+        {
+            "redish-purple-dark": "#BF0060"
+        },
+        {
+            "redish-purple-darker": "#800040"
+        },
+        {
+            "redish-purple-darkest": "#400020"
+        },
+        {
+            "red-lightest": "#FFBFBF"
+        },
+        {
+            "red-lighter": "#FF8080"
+        },
+        {
+            "red-light": "#FF4040"
+        },
+        {
+            "red": "#FF0000"
+        },
+        {
+            "red-dark": "#BF0000"
+        },
+        {
+            "red-darker": "#800000"
+        },
+        {
+            "red-darkest": "#400000"
+        }
+    ],
     "namedList": {},
-    "mixturesNamed": [],
-    "mixtures": [],
-    "named": {}
+    "mixtures": [
+        "#FFDFBF",
+        "#FFC080",
+        "#FFA040",
+        "#FF8000",
+        "#BF6000",
+        "#804000",
+        "#402000",
+        "#FFFFBF",
+        "#FFFF80",
+        "#FFFF40",
+        "#FFFF00",
+        "#BFBF00",
+        "#7F8000",
+        "#404000",
+        "#DFFFBF",
+        "#C0FF80",
+        "#A0FF40",
+        "#80FF00",
+        "#60BF00",
+        "#408000",
+        "#204000",
+        "#BFFFBF",
+        "#80FF80",
+        "#40FF40",
+        "#00FF00",
+        "#00BF00",
+        "#008000",
+        "#004000",
+        "#BFFFDF",
+        "#80FFC0",
+        "#40FFA0",
+        "#00FF80",
+        "#00BF60",
+        "#008040",
+        "#004020",
+        "#BFFFFF",
+        "#80FFFF",
+        "#40FFFF",
+        "#00FFFF",
+        "#00BFBF",
+        "#007F80",
+        "#004040",
+        "#BFDFFF",
+        "#80BFFF",
+        "#409FFF",
+        "#007FFF",
+        "#005FBF",
+        "#003F80",
+        "#002040",
+        "#BFBFFF",
+        "#8080FF",
+        "#4040FF",
+        "#0000FF",
+        "#0000BF",
+        "#000080",
+        "#000040",
+        "#DFBFFF",
+        "#BF80FF",
+        "#9F40FF",
+        "#7F00FF",
+        "#5F00BF",
+        "#3F0080",
+        "#200040",
+        "#FFBFFF",
+        "#FF80FF",
+        "#FF40FF",
+        "#FF00FF",
+        "#BF00BF",
+        "#80007F",
+        "#400040",
+        "#FFBFDF",
+        "#FF80C0",
+        "#FF40A0",
+        "#FF0080",
+        "#BF0060",
+        "#800040",
+        "#400020",
+        "#FFBFBF",
+        "#FF8080",
+        "#FF4040",
+        "#FF0000",
+        "#BF0000",
+        "#800000",
+        "#400000"
+    ],
+    "named": {
+        "orange-lightest": "#FFDFBF",
+        "orange-lighter": "#FFC080",
+        "orange-light": "#FFA040",
+        "orange": "#FF8000",
+        "orange-dark": "#BF6000",
+        "orange-darker": "#804000",
+        "orange-darkest": "#402000",
+        "yellow-lightest": "#FFFFBF",
+        "yellow-lighter": "#FFFF80",
+        "yellow-light": "#FFFF40",
+        "yellow": "#FFFF00",
+        "yellow-dark": "#BFBF00",
+        "yellow-darker": "#7F8000",
+        "yellow-darkest": "#404000",
+        "yellowish-green-lightest": "#DFFFBF",
+        "yellowish-green-lighter": "#C0FF80",
+        "yellowish-green-light": "#A0FF40",
+        "yellowish-green": "#80FF00",
+        "yellowish-green-dark": "#60BF00",
+        "yellowish-green-darker": "#408000",
+        "yellowish-green-darkest": "#204000",
+        "green-lightest": "#BFFFBF",
+        "green-lighter": "#80FF80",
+        "green-light": "#40FF40",
+        "green": "#00FF00",
+        "green-dark": "#00BF00",
+        "green-darker": "#008000",
+        "green-darkest": "#004000",
+        "cyanish-green-lightest": "#BFFFDF",
+        "cyanish-green-lighter": "#80FFC0",
+        "cyanish-green-light": "#40FFA0",
+        "cyanish-green": "#00FF80",
+        "cyanish-green-dark": "#00BF60",
+        "cyanish-green-darker": "#008040",
+        "cyanish-green-darkest": "#004020",
+        "cyan-lightest": "#BFFFFF",
+        "cyan-lighter": "#80FFFF",
+        "cyan-light": "#40FFFF",
+        "cyan": "#00FFFF",
+        "cyan-dark": "#00BFBF",
+        "cyan-darker": "#007F80",
+        "cyan-darkest": "#004040",
+        "cyanish-blue-lightest": "#BFDFFF",
+        "cyanish-blue-lighter": "#80BFFF",
+        "cyanish-blue-light": "#409FFF",
+        "cyanish-blue": "#007FFF",
+        "cyanish-blue-dark": "#005FBF",
+        "cyanish-blue-darker": "#003F80",
+        "cyanish-blue-darkest": "#002040",
+        "blue-lightest": "#BFBFFF",
+        "blue-lighter": "#8080FF",
+        "blue-light": "#4040FF",
+        "blue": "#0000FF",
+        "blue-dark": "#0000BF",
+        "blue-darker": "#000080",
+        "blue-darkest": "#000040",
+        "bluish-purple-lightest": "#DFBFFF",
+        "bluish-purple-lighter": "#BF80FF",
+        "bluish-purple-light": "#9F40FF",
+        "bluish-purple": "#7F00FF",
+        "bluish-purple-dark": "#5F00BF",
+        "bluish-purple-darker": "#3F0080",
+        "bluish-purple-darkest": "#200040",
+        "purple-lightest": "#FFBFFF",
+        "purple-lighter": "#FF80FF",
+        "purple-light": "#FF40FF",
+        "purple": "#FF00FF",
+        "purple-dark": "#BF00BF",
+        "purple-darker": "#80007F",
+        "purple-darkest": "#400040",
+        "redish-purple-lightest": "#FFBFDF",
+        "redish-purple-lighter": "#FF80C0",
+        "redish-purple-light": "#FF40A0",
+        "redish-purple": "#FF0080",
+        "redish-purple-dark": "#BF0060",
+        "redish-purple-darker": "#800040",
+        "redish-purple-darkest": "#400020",
+        "red-lightest": "#FFBFBF",
+        "red-lighter": "#FF8080",
+        "red-light": "#FF4040",
+        "red": "#FF0000",
+        "red-dark": "#BF0000",
+        "red-darker": "#800000",
+        "red-darkest": "#400000"
+    }
 }
