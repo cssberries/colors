@@ -38,26 +38,26 @@ const strongness_3 = Palettes.names.strongness["3_levels"];
 var e = module.exports = {};
 // e.Colors = Colors;
 //
-e.Colors = function() {
-  this.hueList = [];
-  this.mixturesList = [];
-  this.namedList = {};
+e.Colors = function () {
+    this.hueList = [];
+    this.mixturesList = [];
+    this.namedList = {};
 };
 
-e.Colors.prototype.hues = function(amount) {
+e.Colors.prototype.hues = function (amount) {
     let firstColor = Color('#ff0000');
     let angle = 360 / amount;
     for (let i = 1; i < amount + 1; i++) {
         let color = firstColor.rotate(angle * i).hex();
         // console.log(this);
-        
+
         this.hueList.push(color);
     }
     return this;
 };
 //
 e.Colors.prototype.toObject = function () {
-    let array  = this.mixturesList;
+    let array = this.mixturesList;
     let obj = {};
     for (let i = 0; i < array.length; i++) {
         obj[Object.keys(array[i])] = Object.values(array[i])[0];
@@ -75,17 +75,17 @@ e.Colors.prototype.mixture = function (shades, tints) {
         let shadesStep = 100 / shades;
         let tintsList = [];
         let shadesList = [];
-        let colorIndex = (colorNumber*12/colorsNum)+(12/colorsNum)-1;
-        let hueName = colors_12[colorIndex];        
+        let colorIndex = (colorNumber * 12 / colorsNum) + (12 / colorsNum) - 1;
+        let hueName = colors_12[colorIndex];
         for (let i = 1; i < mixtureNumber; i++) {
             if (i < tints) {
                 let tint = {};
-                tint[hueName+'-'+tints_4[i]] = parsedColor.lighten(i * tintsStep / 100).hex();
+                tint[hueName + '-' + tints_4[i]] = parsedColor.lighten(i * tintsStep / 100).hex();
                 tintsList.push(tint);
             }
             if (i > tints) {
-               let shade = {};
-                shade[hueName+'-'+shades_4[i-tints]] = parsedColor.darken((i-tints) * shadesStep / 100).hex();
+                let shade = {};
+                shade[hueName + '-' + shades_4[i - tints]] = parsedColor.darken((i - tints) * shadesStep / 100).hex();
                 shadesList.push(shade);
             }
             if (i === tints) {
@@ -94,7 +94,7 @@ e.Colors.prototype.mixture = function (shades, tints) {
         }
         mixture = mixture.concat(tintsList);
         let hue = {};
-        hue[colors_12[colorIndex]] = this.hueList[colorNumber]        
+        hue[colors_12[colorIndex]] = this.hueList[colorNumber]
         mixture.push(
             hue
         );
@@ -104,12 +104,12 @@ e.Colors.prototype.mixture = function (shades, tints) {
     this.mixtures = Object.values(flatten(mixture));
     return this;
 }
-var coloritt = new e.Colors();
-    coloritt.hues(12)
-    coloritt.mixture(4, 4)
-    coloritt.toObject()
-fs.writeFile("2.json", JSON.stringify((
-    coloritt
+e.coloritt = new e.Colors();
+e.coloritt.hues(12)
+e.coloritt.mixture(4, 4)
+e.coloritt.toObject()
+fs.writeFile("84_colors.json", JSON.stringify((
+    e.coloritt.named
 ), null, 4), function (err) {
     console.log("The file was saved!");
 });
@@ -238,6 +238,16 @@ e.generateManualSet = function (manualset) {
     }
     return set;
 }
-// fs.writeFile("gradate.json", JSON.stringify(e.gradate('white', 5, 0, .4, 'darken', 'step', true), null, 4), function (err) {
-//     console.log("The file was saved!");
-// });
+e.variaze = function (rule) {
+    let declaration = {};
+    for (let key of Object.keys(rule)) {
+    declaration[key] = `var(--bg-${key}, ${rule[key]})`
+    }
+    return declaration
+}
+fs.writeFile("gradate.json", JSON.stringify(e.variaze({
+    'bad': 'red',
+    'ok': 'green'
+}, true), null, 4), function (err) {
+    console.log("The file was saved!");
+});
